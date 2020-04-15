@@ -12,8 +12,8 @@ class App extends Component {
   // Resource = require("./components/Resource");
 
   renderPosts = () => {
-    const display = resources.map((resource) => {
-      return <Resource resource={resource} />;
+    const display = resources.map((resource, index) => {
+      return <Resource resource={resource} key={index}/>;
     });
 
     return display;
@@ -23,9 +23,23 @@ class App extends Component {
     return (
       <div className="App">
         <div className="header">
-          <h1 className="title">Welcome to BrainHive!</h1>
+          <img className="logo" src="https://bit.ly/3ep0Q4Y" />
+          <h1 className="title">BrainHive </h1>
         </div>
-        <div className="resourceList">{this.renderPosts()}</div>
+        <div className="jumbo">
+          <pre className="jumboText">
+            Welecome to brainhive!
+            <br />
+            <br />
+            Feel free to browse the <a href="#resources">resources</a>.
+            <br />
+            <br />
+            📚 Happy learning!
+          </pre>
+        </div>
+        <div id="resources" className="resourceList">
+          {this.renderPosts()}
+        </div>
       </div>
     );
   }
