@@ -1,0 +1,16 @@
+export const resourceInputs = [
+  {  placeholder: "Name", name: "posterName" },
+  {  placeholder: "Resource Author", name: "resourceAuthor" },
+  {  placeholder: "Author Skill Level", name: "authorSkillLevel" },
+  {  placeholder: "Cohort", name: "cohort" },
+  {  placeholder: "Title", name: "title" },
+  {  placeholder: "Categories", name: "categories" },
+  {  placeholder: "Short Summary", name: "summary" },
+  {  placeholder: "Link", name: "link" },
+  {  placeholder: "Resource Type", name: "resourceType" },
+  { type: "date", placeholder: "Date Publihed", name: "datePublished" },
+  {  placeholder: "How long is the video?", name: "videoLength" },
+  { type: "time", placeholder: "How many hours", name: "timeToComplete" },
+  {  placeholder: "Rating", name: "rating" },
+  {  placeholder: "Comments", name: "comments" },
+]

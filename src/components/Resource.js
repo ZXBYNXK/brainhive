@@ -27,10 +27,6 @@ const Resource = ({ resource }) => {
             oallowfullscreen="oallowfullscreen"
             webkitallowfullscreen="webkitallowfullscreen"
           ></iframe>
-          <a className="link" href={link}>
-            {" "}
-            <br /> {title}
-          </a>
         </div>
       );
     } else if (link.includes("watch")) {
@@ -45,34 +41,20 @@ const Resource = ({ resource }) => {
             oallowfullscreen="oallowfullscreen"
             webkitallowfullscreen="webkitallowfullscreen"
           ></iframe>
-          <a className="link" href={link}>
-            {" "}
-            <br /> {title}
-          </a>
         </div>
       );
-    } else if (link) {
-      console.log("Rendered a link", link);
-      return (
-        <div>
-          <a className="link" href={link}>
-            {" "}
-            <img
-              className="defImage"
-              src={"https://bit.ly/3ep0Q4Y"}
-            /> <br /> {title}
-          </a>
-        </div>
-      );
-    } else {
-      return null;
     }
   };
 
 
   return (
     <div className={"box"}>
-      {getResourceVideoOrNot(link, title)}
+      {getResourceVideoOrNot()}
+      <br /> 
+      <a className="link" href={link}>
+            {" "}
+            <br /> {title}
+          </a>
       <p>{resourceAuthor}</p>
       <hr />
       <p>{Date(datePublished)}</p>

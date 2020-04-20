@@ -2,22 +2,32 @@ import React, { Component } from "react";
 import "./App.css";
 import Resource from "./components/Resource";
 import resources from "./mock/resources";
-
+import Form from "./components/Form";
+import { resourceInputs } from "./mock/inputs";
 class App extends Component {
-  //[<Resource resource={aResource}/>, <Resource resource={aResource}]
-  // constructor(props) {
-  //   super(props);
-  //   this.renderPosts.bind(this);
-  // }
-  // Resource = require("./components/Resource");
+  constructor(props) {
+    super(props)
+    this.state = {
+      resources
+    }
+  }
+
 
   renderPosts = () => {
-    const display = resources.map((resource, index) => {
-      return <Resource resource={resource} key={index}/>;
+    const display = this.state.resources.reverse().map((resource, index) => {
+      return <Resource resource={resource} key={index} />;
     });
 
     return display;
   };
+
+  submitResourceForm = (resourceForm) => {
+    this.setState({
+      ...this.state.resources,
+      resources: [...this.state.resources, resourceForm]
+    })
+  };  
+
 
   render() {
     return (
@@ -31,11 +41,19 @@ class App extends Component {
             Welecome to brainhive!
             <br />
             <br />
-            Feel free to browse the <a href="#resources">resources</a>.
+            <a href="#resources">Browse </a> and <a href="#">share</a>{" "}
+            resources.
             <br />
             <br />
             📚 Happy learning!
           </pre>
+     
+          <Form
+            styleRef={"Form"}
+            inputs={resourceInputs}
+            afterSubmit={this.submitResourceForm}
+            submitText={"Submit Resource"}
+          />
         </div>
         <div id="resources" className="resourceList">
           {this.renderPosts()}
