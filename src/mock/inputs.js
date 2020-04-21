@@ -1,7 +1,10 @@
 export const resourceInputs = [
-  { placeholder: "Name", name: "posterName" },
-  { placeholder: "Resource Author", name: "resourceAuthor" },
-  { placeholder: "Author Skill Level", name: "authorSkillLevel" },
+  {  placeholder: "Your Name", name: "posterName" },
+  { placeholder: "Author of resource", name: "resourceAuthor" },
+  { label: "Author skill level", htmlFor: "authorSkillLevel", type:"title" },
+  { label: "Advanced", type: "radio", name: "authorSkillLevel", radioValue: "Advanced" },
+  { label:"Intermediate", type: "radio", name: "authorSkillLevel", radioValue: "Intermediate" },
+  { label: "Beginner", type: "radio", name: "authorSkillLevel", radioValue: "Beginner" },
   { placeholder: "Cohort", name: "cohort" },
   { placeholder: "Title", name: "title" },
   { placeholder: "Categories", name: "categories" },
@@ -10,7 +13,6 @@ export const resourceInputs = [
   { placeholder: "Resource Type", name: "resourceType" },
   { placeholder: "Date Publihed", name: "datePublished", type: "date" },
   { placeholder: "How long is the video?", name: "videoLength" },
-  { placeholder: "How many hours", name: "timeToComplete", type: "time" },
+  { placeholder: "How many hours", name: "timeToComplete", type: "number" },
   { placeholder: "Rating", name: "rating" },
-  { placeholder: "Comments", name: "comments" },
 ];
