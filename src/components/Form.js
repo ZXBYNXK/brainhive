@@ -1,10 +1,12 @@
-// <Form styling={CLASSNAME} inputs={[{PLACEHOLDER, TYPE, NAME  }, {...}, ...]} afterSubmit={METHOD-OF-CHANGE} />
+// <Form styling={CLASSNAME} inputs={[{PLACEHOLDER, NAME, TYPE <--OPTIONAL,   }, {...}, ...]} afterSubmit={METHOD-OF-CHANGE} />
+
+
 // Example:
     // <Form 
     //  styling={"Form-Normal"} 
     //  inputs={
     //      [
-    //          {placeholder:"First Name", type: "text", name: "firstName"},
+    //          {placeholder:"First Name", name: "firstName"},
     //          {placeHolder:"Last Name", type:"text", name: "lastName"},
     //          {placeholder:"Age", type:"number", name:"age"}
     //      ]
@@ -21,7 +23,12 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+    // The state will contain only the name attributes as keys and the values will be set to an emptyString
+    // {INPUT-NAME-ATTRIBUTE: ''}
+    //  Ex: {firstName: ''}
   }
+
+  //Uses the afterSubmit given method to pass the state
   submitForm = (e) => {
     e.preventDefault();
     this.props.afterSubmit(this.state)

@@ -94,6 +94,7 @@ hr {
   color: dodgerblue;
   text-decoration: none;
 }
+
 .resourceList {
   padding-top: 3rem;
   display: flex;
@@ -103,22 +104,35 @@ hr {
   margin: 10rem;
 
 }
+
+.nav-link {
+  font-size: 2rem;  
+  height: 1.5rem;
+  margin: 40px;
+  color: dodgerblue;
+}
+
+.ShareResourcePage {
+  padding-top: 144px;
+}
 .Form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 50vw;
-  height: 50vh;
   margin: 0 auto;
-  overflow-y: auto;
+
 }
 .Form input {
-  padding: 2rem;
+  padding: 1rem;
   background-color: dodgerblue;
   border-style: none;
   border-radius: 0.3rem ;
   margin: 1rem;
   color: white;
   height: 100%;
+  box-shadow: 0.1rem 0.1rem 0.2rem black;
+  font-size: xx-large;
 }
 .header {
   display: flex;

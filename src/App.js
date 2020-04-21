@@ -1,64 +1,41 @@
+// Packages
 import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+
+
+
+
+
+
+//  DR: CSS
 import "./App.css";
-import Resource from "./components/Resource";
-import resources from "./mock/resources";
-import Form from "./components/Form";
-import { resourceInputs } from "./mock/inputs";
+
+// DR: General Components
+import NavBar from "./components/NavBar"
+
+//  DR: Route Components for other pages
+import ShareResourcePage from "./components/routes/ShareResourcePage";
+import HomePage from "./components/routes/HomePage";
+
+//  DR: Data needed for component testing, and clean code.
+
+//  DR: The Entire App
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      resources
-    }
-  }
-
-
-  renderPosts = () => {
-    const display = this.state.resources.reverse().map((resource, index) => {
-      return <Resource resource={resource} key={index} />;
-    });
-
-    return display;
-  };
-
-  submitResourceForm = (resourceForm) => {
-    this.setState({
-      ...this.state.resources,
-      resources: [...this.state.resources, resourceForm]
-    })
-  };  
-
+ 
 
   render() {
     return (
-      <div className="App">
-        <div className="header">
-          <img className="logo" src="https://bit.ly/3ep0Q4Y" />
-          <h1 className="title">BrainHive </h1>
+      <BrowserRouter>
+        <div className="App">
+          <div className="header">
+            <NavBar/>
+          </div>
+          <div>
+            <Route exact path="/" component={HomePage}/>
+            <Route path="/share-resource" component={ShareResourcePage} />
+            </div>
         </div>
-        <div className="jumbo">
-          <pre className="jumboText">
-            Welecome to brainhive!
-            <br />
-            <br />
-            <a href="#resources">Browse </a> and <a href="#">share</a>{" "}
-            resources.
-            <br />
-            <br />
-            📚 Happy learning!
-          </pre>
-     
-          <Form
-            styleRef={"Form"}
-            inputs={resourceInputs}
-            afterSubmit={this.submitResourceForm}
-            submitText={"Submit Resource"}
-          />
-        </div>
-        <div id="resources" className="resourceList">
-          {this.renderPosts()}
-        </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }

@@ -1,11 +1,5 @@
 import React from "react";
 
-
-
-
-
-
-
 const Resource = ({ resource }) => {
  // DR: This is a function that will dynamically make either an iframe for the video
  //   or a image, & also a link incase the iframe dosent work.
