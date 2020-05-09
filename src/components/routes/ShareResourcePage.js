@@ -2,17 +2,20 @@ import React from "react";
 import Form from "../Form";
 import { resourceInputs } from "../../mock/inputs";
 
-function ShareResourcePage() {
+function ShareResourcePage({submitResourceForm}) {
 
 return (
     <div className="ShareResourcePage">
-    <h1>Share a resource</h1>
+ 
+
+      {/* Next features of the Form component is the buttons array [{onClick:method, buttonText}] */}
       <Form
         styleRef={"Form"}
         inputs={resourceInputs}
-        afterSubmit={() => {}}
+        afterSubmit={submitResourceForm}
         submitText={"Submit Resource"}
       />
+      <br />
     </div>
   );
 

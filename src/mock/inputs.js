@@ -1,18 +1,40 @@
 export const resourceInputs = [
-  {  placeholder: "Your Name", name: "posterName" },
+  { placeholder: "Your Name", name: "posterName" },
+
   { placeholder: "Author of resource", name: "resourceAuthor" },
-  { label: "Author skill level", htmlFor: "authorSkillLevel", type:"title" },
-  { label: "Advanced", type: "radio", name: "authorSkillLevel", radioValue: "Advanced" },
-  { label:"Intermediate", type: "radio", name: "authorSkillLevel", radioValue: "Intermediate" },
-  { label: "Beginner", type: "radio", name: "authorSkillLevel", radioValue: "Beginner" },
+
+  {
+    label: "Author Skill Level",
+    name: "authorSkillLevel",
+    type: "radio",
+    values: [
+      "Advanced",
+      "Intermediate",
+      "Beginner"
+    ],
+  },
   { placeholder: "Cohort", name: "cohort" },
+
   { placeholder: "Title", name: "title" },
+
   { placeholder: "Categories", name: "categories" },
-  { placeholder: "Short Summary", name: "summary" },
+
+  { placeholder: "Short Summary", name: "summary", type:"textarea"},
+
   { placeholder: "Link", name: "link" },
+
   { placeholder: "Resource Type", name: "resourceType" },
+
   { placeholder: "Date Publihed", name: "datePublished", type: "date" },
+
   { placeholder: "How long is the video?", name: "videoLength" },
+
   { placeholder: "How many hours", name: "timeToComplete", type: "number" },
-  { placeholder: "Rating", name: "rating" },
+
+  { placeholder: "Rating", name: "rating", type:"number", limit:"5"},
 ];
+
+export const commentInputs = [
+  {placeholder: "Your Name", name:"user"},
+  {placeholder:"Post Comment", name:"text", type: "textarea"}
+]

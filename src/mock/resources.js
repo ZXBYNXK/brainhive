@@ -1,5 +1,6 @@
-const resources = [
-  {
+
+const resources = {
+  "ozxw-1z0p": {
     posterName: "Joel",
     resourceAuthor: "Traversy Media",
     authorSkillLevel: "Advance",
@@ -18,7 +19,8 @@ const resources = [
       { user: "Bella", text: "Simple and straight to the point." },
     ],
   },
-  {
+  
+  "pm0z-mole": {
     posterName: "John F",
     resourceAuthor: "DevEd",
     authorSkillLevel: "Beginner",
@@ -39,7 +41,8 @@ const resources = [
       { user: "Sheila", text: "A good intro to React." },
     ],
   },
-  {
+  
+  "wx0z-jkle": {
     posterName: "Cliff Choiniere",
     resourceAuthor: "NetNinja",
     authorSkillLevel: "Advanced",
@@ -48,7 +51,7 @@ const resources = [
     categories: ["React", "Redux"],
     summary:
       "A good resouce on building a couple react apps with and without redux",
-    link: "www.google.com/search?q=NetNinja%20React",
+    link: "https://www.google.com/search?q=NetNinja%20React",
     resourceType: "Playlist",
     datePublished: "2018-09-10.00:00:00.000z",
     videoLength: null,
@@ -59,7 +62,8 @@ const resources = [
       { user: "Phen", text: "The best to learn React with." },
     ],
   },
-  {
+
+  "pxxk-9lle": {
     posterName: "Chang",
     resourceAuthor: "Web Dev Simplified",
     authorSkillLevel: "Advanced",
@@ -79,7 +83,8 @@ const resources = [
       { user: "Smith", text: "Great video!" },
     ],
   },
-  {
+  
+  "070z-mpo3": {
     posterName: "Phen",
     resourceAuthor: "Web Simplified",
     authorSkillLevel: "Advanced",
@@ -99,7 +104,8 @@ const resources = [
       { user: "James", text: "Great video to learn rest API with." },
     ],
   },
-  {
+
+  "pn09-s0lq": {
     posterName: "Titus",
     resourceAuthor: "NetNinja",
     authorSkillLevel: "Advanced",
@@ -119,7 +125,8 @@ const resources = [
       { user: "Jones", text: "The best to learn React with." },
     ],
   },
-  {
+
+  "8cew-0khe": {
     posterName: "Darius",
     resourceAuthor: "Tech Sith",
     authorSkillLevel: "Advanced",
@@ -140,7 +147,8 @@ const resources = [
       { user: "Kate", text: "Very pithy! 😁" },
     ],
   },
-  {
+
+  "w80z-3w6n": {
     posterName: "Holly",
     resourceAuthor: "Dave Ceddia",
     authorSkillLevel: "Advanced",
@@ -159,13 +167,14 @@ const resources = [
       { user: "Joel", text: "The best resource to learn React with." },
     ],
   },
-  {
+
+  "wazk-0fae": {
     posterName: "David",
     resourceAuthor: "Maximilian Schwarzmüller",
     authorsSkillLevel: "advanced",
     cohort: "8",
     title: "React - The Complete Guide (incl Hooks, React Router, Redux)",
-    category: "React",
+    categories: ["React"],
     summary:
       "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!",
     link: "https://www.udemy.com/course/react-the-complete-guide-incl-redux/",
@@ -175,10 +184,10 @@ const resources = [
     timeToComplete: 2430,
     rating: 5,
     comments: [
-      { user: "David", comment: "This is awesome" },
-      { user: "Linda", comment: "Great lecture" },
+      { user: "David", text: "This is awesome" },
+      { user: "Linda", text: "Great lecture" },
     ],
   },
-];
+};
 
 export default resources;
