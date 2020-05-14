@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-
+import Moment from "react-moment";
+import "moment-timezone"
 import Form from "./Form";
 
 import { commentInputs } from "../mock/inputs";
 
 class Resource extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      resource: {...props.resource}
-    }
+      resource: { ...props.resource },
+    };
   }
   // DR: This is a function that will dynamically make either an iframe for the video
   //   or a image, & also a link incase the iframe dosent work
@@ -26,7 +27,6 @@ class Resource extends Component {
       toggleVideo,
       toggleCommentForm,
       submitComment,
-  
     } = this.props;
 
     const {
@@ -40,6 +40,9 @@ class Resource extends Component {
       comments,
     } = this.state.resource;
 
+    const datePublishedNormal = datePublished.slice(0, datePublished.indexOf(".")).split("-")
+
+    // console.log(33, datePublishedNormal)
     // Returned element
     return (
       // The entire resource element
@@ -68,7 +71,10 @@ class Resource extends Component {
         {datePublished ? (
           <span>
             {" "}
-            <br /> Date published: <p>{datePublished.toLocaleString()}</p>{" "}
+            <br /> Date published:
+            <br /> 
+            {`${datePublishedNormal[1]}/${datePublishedNormal[2]}/${datePublishedNormal[0]}`}
+            {" "}
           </span>
         ) : null}
 
@@ -76,7 +82,7 @@ class Resource extends Component {
         {videoLength ? <p>Length: {videoLength} minutes</p> : null}
 
         {/* Categories */}
-        {categories ? (
+        {typeof categories === "object" ? (
           <p>
             Categories: <br />{" "}
             {categories.map((category, index) => {
@@ -87,7 +93,7 @@ class Resource extends Component {
               return temp;
             })}
           </p>
-        ) : null}
+        ) : categories || null}
 
         {/* Summary */}
         {summary ? <p>{summary}</p> : null}
@@ -125,59 +131,39 @@ class Resource extends Component {
         {/* Embed youtube video - iframe */}
         <div style={style.changingArea}>
           {showVideo
-            ? (() => {
-                if (link.includes("playlist")) {
-                  console.log(
-                    "rendered a playlist",
-                    link.replace("playlist", "embed/videoseries")
-                  );
-                  return (
-                    <div>
-                      <iframe
-                        src={link.replace(
-                          "playlist",
-                          "/embed?listType=playlist&list="
-                        )}
-                        title={title}
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen="allowfullscreen"
-                        mozallowfullscreen="mozallowfullscreen"
-                        msallowfullscreen="msallowfullscreen"
-                        oallowfullscreen="oallowfullscreen"
-                        webkitallowfullscreen="webkitallowfullscreen"
-                      ></iframe>
-                    </div>
-                  );
-                } else if (link.includes("watch")) {
+            ? ( () => {
+                if (link.includes("youtube")) {
+                  const videoIdIndex = link.indexOf("?v=");
+                  const videoId = link.substring(videoIdIndex + 3);
                   console.log(
                     "rendered a video",
-                    link.replace("watch?v=", "embed/")
+                    `https://www.youtube.com/embed/${videoId}`
                   );
                   return (
                     <div>
                       <iframe
-                        src={link.replace("watch?v=", "embed")}
+                        src={`https://www.youtube.com/embed/${videoId}`}
                         title={title}
-                        allowFullScreen="allowfullscreen"
                         mozallowfullscreen="mozallowfullscreen"
                         msallowfullscreen="msallowfullscreen"
                         oallowfullscreen="oallowfullscreen"
                         webkitallowfullscreen="webkitallowfullscreen"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
                       ></iframe>
                     </div>
                   );
                 }
               })()
             : null}
-
           {/* Comments */}
-          {showComments ? (comments.map((comment, index) => (
-            <div className={"Comment"} key={`comment-${index}`}>
-              {comment.user}: {comment.text}
-            </div>
-          ))) : null}
-
+          {showComments && comments
+            ? comments.map((comment, index) => (
+                <div className={"Comment"} key={`comment-${index}`}>
+                  {comment.user}: {comment.text}
+                </div>
+              ))
+            : null}
           {/* Post Comment */}
           {showCommentInput ? (
             <Form
