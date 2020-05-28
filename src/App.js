@@ -17,9 +17,6 @@ import ShareResourcePage from "./components/routes/ShareResourcePage";
 import ResourcePage from "./components/routes/ResourcePage";
 import HomePage from "./components/routes/HomePage";
 
-// Mock data
-import resources from "./mock/resources";
-
 //  DR: The Entire App
 function App() {
     return (

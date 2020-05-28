@@ -24,9 +24,9 @@
 //  2: Assign a variable an object as initial state (If not needed then set the init value as '{}' ).
 
 // 1: Create the action types
-const TOGGLE_COMMENTS = "brainhive/resource/toggle_comments";
-const TOGGLE_VIDEO = "brainhive/resource/toggle_video";
-const TOGGLE_COMMENT_INPUT = "brainhive/resource/toggle_comment_input";
+const TOGGLE_COMMENTS = "brainhive/resourcePage/toggle_comments";
+const TOGGLE_VIDEO = "brainhive/resourcePage/toggle_video";
+const TOGGLE_COMMENT_INPUT = "brainhive/resourcePage/toggle_comment_input";
 
 //  NOTE:
 //          The value of each action type is not an actual path to a file

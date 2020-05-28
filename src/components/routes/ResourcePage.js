@@ -87,11 +87,16 @@ import Error404 from "../Error404";
 import { withRouter } from "react-router-dom";
 import Resource from "../Resource";
 import { useParams } from "react-router-dom";
-
+import {toggleComments, toggleVideo, toggleCommentInput} from "../../redux/modules/resourcePage"
 
 function ResourcePage({resources}) {
   const hash_key = useParams("hash_key");
-  return resources[hash_key] ? <Resource {...resources[hash_key]} hash_key={hash_key} /> : <Error404 />;
+  const actionCreators = {
+    showComments,
+    showVideo,
+    toggleComments
+  }
+  return resources[hash_key] ? <Resource {...resources[hash_key]} {...actionCreators} hash_key={hash_key} /> : <Error404 />;
 }
 
 

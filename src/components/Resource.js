@@ -2,6 +2,9 @@ import React, { Component } from "react";
 
 import Form from "./Form";
 
+
+
+
 import { commentInputs } from "../mock/inputs";
     // const {
     //   commentButtonText,
@@ -9,9 +12,7 @@ import { commentInputs } from "../mock/inputs";
     //   postCommentButtonText,
     //   showComments,
     //   showVideo,
-    //   showCommentInput,
-    //   toggleComments,
-    //   toggleVideo,
+
     //   toggleCommentForm,
     //   submitComment,
     // } = this.props;
@@ -24,6 +25,10 @@ function Resource({
   summary,
   resourceAuthor,
   comments,
+      toggleVideo,
+      toggleComments,
+      toggleVideo,
+
 }) {
 
     const datePublishedNormal = datePublished.slice(0, datePublished.indexOf(".")).split("-");

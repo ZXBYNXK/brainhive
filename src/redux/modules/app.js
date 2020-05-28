@@ -16,20 +16,20 @@ export default (state = init_state, action = {}) => {
   switch (action.type) {
     
     case FIND_RESOURCE:
-    return {...state[payload]}
+    return {...state[action.payload]}
 
     // case UPDATE_RESOURCE:
     
     //   break;
 
     case SUBMIT_RESOURCE_FORM:
-    return {...state, resources: {...state.resources, [generateKey()]: {...payload} }}
+    return {...state, resources: {...state.resources, [generateKey()]: {...action.payload} }}
 
-    case GET_RESOURCE_HASH:
-      return Object.keys(action.payload)[0];
+    // case GET_RESOURCE_HASH:
+    //   return Object.keys(action.payload)[0];
 
-    case GET_ALL_RESOURCE_HASHES:
-      return Object.keys(state.resources);
+    // case GET_ALL_RESOURCE_HASHES:
+    //   return Object.keys(state.resources);
 
     default:
       return { ...state };
