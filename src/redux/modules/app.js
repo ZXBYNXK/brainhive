@@ -9,15 +9,11 @@ const GET_ALL_RESOURCE_HASHES = "brainhive/app/get_all_resource_hashes";
 
 const init_state = {
   resources,
-  onResourceKey: null,
 };
 
 export default (state = init_state, action = {}) => {
   switch (action.type) {
     
-    case FIND_RESOURCE:
-    return {...state[action.payload]}
-
     // case UPDATE_RESOURCE:
     
     //   break;

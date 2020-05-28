@@ -3,8 +3,8 @@
 // Dont have a comfortable understanding of this file.
 
 import { createStore, applyMiddleware, combineReducers } from "redux";
-import createLogger from "redux-logger";
-import thunk from "redux-thunk";
+import {createLogger } from "redux-logger";
+import {default as reduxThunk} from "redux-thunk";
 
 // Imported Reducers to be combined
 import resourceReducer from "./modules/resource";
@@ -12,7 +12,7 @@ import appReducer from "./modules/app";
 const loggerMiddleware = createLogger();
 
 const createStoreWithMiddleware = applyMiddleware(
-  thunk,
+  reduxThunk,
   loggerMiddleware
 )(createStore);
 
@@ -22,6 +22,6 @@ const reducer = combineReducers({
 });
 
 const configureStore = (initialState) =>
-  createStoreWithMiddleware(reducer, initialState);
+  createStoreWithMiddleware(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default configureStore;

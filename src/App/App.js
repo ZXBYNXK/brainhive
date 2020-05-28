@@ -1,24 +1,23 @@
 // Packages
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { v4 } from "uuid";
-import 'moment-timezone';
- 
+import { connect } from "react-redux";
+import { v4 } from "uuid"; 
 //  DR: CSS
 import "./App.css";
 
 
 // DR: General Components
-import NavBar from "./components/NavBar";
-import ResourcePreview from "./components/ResourcePreview";
+import NavBar from "../components/NavBar";
 
 //  DR: Route Components for other pages
-import ShareResourcePage from "./components/routes/ShareResourcePage";
-import ResourcePage from "./components/routes/ResourcePage";
-import HomePage from "./components/routes/HomePage";
+import ShareResourcePage from "./ShareResource/ShareResource";
+import ResourcePage from "./Resource/Resource";
+import HomePage from "./Home/Home";
 
 //  DR: The Entire App
-function App() {
+function App({ resources }) {
+  console.log(12, resources)
     return (
       <BrowserRouter>
         <div className="App">
@@ -27,24 +26,36 @@ function App() {
           </div>
           <div>
             <Route exact path="/">
-              <HomePage />
+              <HomePage resources={resources} />
             </Route>
             <Route path="/share-resource">
               <ShareResourcePage />
             </Route>
             <Route path="/resource/:hash_key">
-              <ResourcePage />
+              <ResourcePage resources={resources} />
             </Route>
           </div>
         </div>
       </BrowserRouter>
     );
+
+
+
   }
 
 
+  
+  const getResourceHash = (object) => Object.keys(object)[0];
+  
 
-export default App;
+  const mapStateToProps = (state) => {
+      return {
+        resources: {...state.appReducer.resources}
+      }    
+  }
+  
 
+export default connect(mapStateToProps)(App);
 
 
 
@@ -124,23 +135,7 @@ export default App;
 
 
 
-// const renderResources = () => {
-//   const { resources } = this.state;
-//   const allResourceHashes = this.getAllResourceHashes();
-//   return allResourceHashes.map((hashKey) =>
-//     resources[hashKey] ? (
-//       <ResourcePreview
-//         {...resources[hashKey]}
-//         hashKey={hashKey}
-//         key={hashKey}
-//       />
-//     ) : null
-//   );
-// };
 
-// const getResourceHash = (object) => Object.keys(object)[0];
-
-// const getAllResourceHashes = (object) => Object.keys(resources);
 // // submitResourceForm = resourceForm => this.setState({ ...this.state.resources, resources: { ...this.state.resources, [v4()]: {...resourceForm}  } })
 
 // submitResourceForm = (resourceForm) => {

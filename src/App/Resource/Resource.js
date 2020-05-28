@@ -68,44 +68,59 @@
 //     });
 //   };
 
-//   submitComment = (comment) => { 
+//   submitComment = (comment) => {
 //    const {hash_key, resource} = this.state;
 //     this.setState({...resource, comments: [...resource.comments, comment]})
-//     this.props.updateResource(hash_key, this.state.resource); 
+//     this.props.updateResource(hash_key, this.state.resource);
 //     this.setState({})
 //   };
 // }
 
 // export default withRouter(ResourcePage);
 
-
-
-
 import React from "react";
-import {connect} from "react-redux"
-import Error404 from "../Error404";
+import { connect } from "react-redux";
+import Error404 from "../../components/Error404";
 import { withRouter } from "react-router-dom";
-import Resource from "../Resource";
+import Resource from "../../components/Resource";
 import { useParams } from "react-router-dom";
-import {toggleComments, toggleVideo, toggleCommentInput} from "../../redux/modules/resourcePage"
+import { toggleComments, toggleVideo, toggleCommentForm } from "../../redux/modules/resource"
 
-function ResourcePage({resources}) {
-  const hash_key = useParams("hash_key");
+function ResourcePage({
+  resources,
+  toggleVideo,
+  toggleCommentForm,
+  toggleComments,
+  logic
+}) {
+  const { hash_key } = useParams("hash_key");
+
   const actionCreators = {
-    showComments,
-    showVideo,
-    toggleComments
-  }
-  return resources[hash_key] ? <Resource {...resources[hash_key]} {...actionCreators} hash_key={hash_key} /> : <Error404 />;
+    toggleVideo,
+    toggleCommentForm,
+    toggleComments,
+  };
+
+  console.log(12, resources);
+  return resources[hash_key] ? (
+    <Resource
+      {...resources[hash_key]}
+      {...actionCreators}
+      {...logic}
+      hash_key={hash_key}
+    />
+  ) : (
+    <Error404 />
+  );
 }
-
-
 
 const mapStateToProps = (state) => {
   return {
-    resources: {...state.resources}
-  }
-}
+    resources: { ...state.appReducer.resources },
+    logic: {...state.resourceReducer}
+  };
+};
 
 
-export default withRouter(connect(mapStateToProps)(ResourcePage));
+
+export default withRouter(connect(mapStateToProps, {toggleCommentForm, toggleComments, toggleVideo})(ResourcePage));
