@@ -1,46 +1,32 @@
 import React, { Component } from "react";
-import Moment from "react-moment";
-import "moment-timezone"
+
 import Form from "./Form";
 
 import { commentInputs } from "../mock/inputs";
+    // const {
+    //   commentButtonText,
+    //   videoButtonText,
+    //   postCommentButtonText,
+    //   showComments,
+    //   showVideo,
+    //   showCommentInput,
+    //   toggleComments,
+    //   toggleVideo,
+    //   toggleCommentForm,
+    //   submitComment,
+    // } = this.props;
+function Resource({
+  link,
+  title,
+  datePublished,
+  videoLength,
+  categories,
+  summary,
+  resourceAuthor,
+  comments,
+}) {
 
-class Resource extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      resource: { ...props.resource },
-    };
-  }
-  // DR: This is a function that will dynamically make either an iframe for the video
-  //   or a image, & also a link incase the iframe dosent work
-
-  render() {
-    const {
-      commentButtonText,
-      videoButtonText,
-      postCommentButtonText,
-      showComments,
-      showVideo,
-      showCommentInput,
-      toggleComments,
-      toggleVideo,
-      toggleCommentForm,
-      submitComment,
-    } = this.props;
-
-    const {
-      link,
-      title,
-      datePublished,
-      videoLength,
-      categories,
-      summary,
-      resourceAuthor,
-      comments,
-    } = this.state.resource;
-
-    const datePublishedNormal = datePublished.slice(0, datePublished.indexOf(".")).split("-")
+    const datePublishedNormal = datePublished.slice(0, datePublished.indexOf(".")).split("-");
 
     // console.log(33, datePublishedNormal)
     // Returned element
@@ -180,7 +166,7 @@ class Resource extends Component {
       </div>
     );
   }
-}
+
 // Style object for resource element
 const style = {
   main: {
